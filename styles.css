@@ -1,0 +1,48 @@
+body {
+    background-color: #eeeeee;
+    font-family: "Cambria", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: #444444;
+}
+
+div {
+	margin: 0 auto;
+}
+
+.spacer {
+    width: 100%;
+    height: 30px;
+}
+
+.block {
+    display:inline-block;
+    vertical-align: middle;
+    margin:5px 5px;
+    padding:5px;
+    width: 300px;
+}
+a {
+    color: #444444;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.left {
+    text-align: right;
+}
+.right {
+    text-align: left;
+}
+.name {
+    font-size: 40px;
+}
+
+.boxed {
+    border: 3px solid black;
+    background-color: #fafafa;
+    line-height: 150%;
+}
