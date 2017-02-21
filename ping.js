@@ -70,10 +70,10 @@ $(document).ready(function () {
       ]
     },
     {
-      tag: 'fgc-demo',
-      name: 'sfv.fightinggame.community',
+      tag: 'sfv-fgc',
+      name: 'sfv.fgc.mpaulweeks.com',
       endpoints: [
-        create_endpoint('http://sfv.fightinggame.community/health')
+        create_endpoint('http://sfv.fgc.mpaulweeks.com/health')
       ]
     },
   ];
