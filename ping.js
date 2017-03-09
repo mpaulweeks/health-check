@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  function refresh_info(service){
+  function refreshInfo(service){
     var details = "";
     var is_up = true;
     var is_done = true;
@@ -20,7 +20,7 @@ $(document).ready(function () {
     }
   }
 
-  function check_service(service){
+  function checkService(service){
     $('#names').append('<p><a href="' + service.endpoints[0].url + '">' + service.name + '</a></p>');
     $('#results').append('<p id="' + service.tag + '">checking...</p>');
       service.endpoints.forEach(function (endpoint){
@@ -30,16 +30,16 @@ $(document).ready(function () {
         }).success(function (data){
           endpoint.is_up = true;
           endpoint.message = data;
-          refresh_info(service);
+          refreshInfo(service);
         }).fail(function (data){
           endpoint.is_up = false;
           endpoint.message = data;
-          refresh_info(service);
+          refreshInfo(service);
         });
       });
   }
 
-  function create_endpoint(url){
+  function createEndpoint(url){
     return {
       url: url,
       is_up: null,
@@ -47,38 +47,13 @@ $(document).ready(function () {
     }
   }
 
-  var services = [
-    {
-      tag: 'cat-herder',
-      name: 'cat herder',
-      endpoints: [
-        create_endpoint('http://cat-herder.mpaulweeks.com')
-      ]
-    },
-    {
-      tag: 'commander-league',
-      name: 'commander league',
-      endpoints: [
-        create_endpoint('http://edh.mpaulweeks.com')
-      ]
-    },
-    {
-      tag: 'type4stack',
-      name: 'type4stack',
-      endpoints: [
-        create_endpoint('http://type4.mpaulweeks.com/')
-      ]
-    },
-    {
-      tag: 'sfv-fgc',
-      name: 'sfv.fgc.mpaulweeks.com',
-      endpoints: [
-        create_endpoint('http://sfv.fgc.mpaulweeks.com/health')
-      ]
-    },
-  ];
-
-  services.forEach(function (service){
-    check_service(service);
+  $.getJSON("services.json", function(data){
+    data.forEach(function (service){
+      service.endpoints = [];
+      service.urls.forEach(function (url){
+        service.endpoints.push(createEndpoint(url));
+      });
+      checkService(service);
+    });
   });
 });
