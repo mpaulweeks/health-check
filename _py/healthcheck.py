@@ -10,7 +10,11 @@ import requests
 def send_email(success, body):
     with open("_local/mailgun.json") as jsonFile:
         creds = json.load(jsonFile)
-    subject = "HEALTHCHECK %s" % ("OK" if success else "FAILED")
+    today_str = datetime.utcnow().strftime("%Y/%m/%d")
+    subject = "HEALTHCHECK %s %s" % (
+        today_str,
+        "OK" if success else "FAILED",
+    )
     text = """
 Result of health check
 ======================
@@ -40,19 +44,19 @@ def perform_check():
     for endpoint in endpoints:
         for url in endpoint['urls']:
             response = requests.get(url)
-            url_success = response.status_code == 200
-            message = "%s %s" % (
-                "  UP" if url_success else "DOWN",
+            ms = int(response.elapsed.total_seconds() * 1000)
+            message = "%s %sms %s" % (
+                response.status_code,
+                ms,
                 url,
             )
             messages.append(message)
-            success = success and url_success
+            success = success and response.status_code == 200
     return success, "\n".join(messages)
 
 
 def is_special_time():
-    # return datetime.utcnow().hour == 1
-    return True
+    return datetime.utcnow().hour == 7
 
 
 if __name__ == "__main__":
