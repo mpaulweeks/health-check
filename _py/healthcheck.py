@@ -1,13 +1,13 @@
 
+from datetime import datetime
 import json
 
 import requests
 
-# 0 5 * * * ec2-user cd /home/ec2-user/health-check && python _py/healthcheck.py
+# 0 * * * * ec2-user cd /home/ec2-user/health-check && python _py/healthcheck.py
 
 
 def send_email(success, body):
-    print ('sending healthcheck email')
     with open("_local/mailgun.json") as jsonFile:
         creds = json.load(jsonFile)
     subject = "HEALTHCHECK %s" % ("OK" if success else "FAILED")
@@ -50,6 +50,11 @@ def perform_check():
     return success, "\n".join(messages)
 
 
+def is_special_time():
+    return datetime.utcnow().hour == 1
+
+
 if __name__ == "__main__":
     success, messages = perform_check()
-    send_email(success, messages)
+    if is_special_time() or not success:
+        send_email(success, messages)
