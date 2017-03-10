@@ -51,7 +51,8 @@ def perform_check():
 
 
 def is_special_time():
-    return datetime.utcnow().hour == 1
+    # return datetime.utcnow().hour == 1
+    return True
 
 
 if __name__ == "__main__":

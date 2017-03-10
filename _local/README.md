@@ -1,1 +1,1 @@
-cred.json
+mailgun.json
