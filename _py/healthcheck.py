@@ -37,7 +37,7 @@ Result of health check
 
 
 def perform_check():
-    with open("static/services.json") as jsonFile:
+    with open("docs/static/services.json") as jsonFile:
         endpoints = json.load(jsonFile)
     success = True
     messages = []
