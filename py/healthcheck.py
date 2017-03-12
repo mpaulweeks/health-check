@@ -4,11 +4,11 @@ import json
 
 import requests
 
-# 0 * * * * ec2-user cd /home/ec2-user/health-check && python _py/healthcheck.py
+# 0 * * * * ec2-user cd /home/ec2-user/health-check && ./cronjob.sh
 
 
 def send_email(success, body):
-    with open("_local/mailgun.json") as jsonFile:
+    with open("local/mailgun.json") as jsonFile:
         creds = json.load(jsonFile)
     today_str = datetime.utcnow().strftime("%Y/%m/%d")
     subject = "HEALTHCHECK %s %s" % (
