@@ -5,3 +5,4 @@ Static page for health-checking my current websites
 
 - find a way to check that cronjobs are healthy
 - Add `df -T` result to email
+- Convert to node.js to share all code between FE and BE?
