@@ -1,10 +1,20 @@
 
 from datetime import datetime
 import json
+import subprocess
 
 import requests
 
 # 0 * * * * ec2-user cd /home/ec2-user/health-check && ./cronjob.sh
+
+
+def get_more_info(body):
+    return [
+        body,
+        subprocess.check_output(
+            ["df -T"],
+        )
+    ]
 
 
 def send_email(success, body):
@@ -19,7 +29,7 @@ def send_email(success, body):
 Result of health check
 ======================
 %s
-""" % body
+""" % "\n\n".join(get_more_info(body))
     url = "https://api.mailgun.net/v3/%s/messages"
     return requests.post(
         url % creds['mailgun_domain_name'],
