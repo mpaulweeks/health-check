@@ -5,14 +5,14 @@ import subprocess
 
 import requests
 
-# 0 * * * * ec2-user cd /home/ec2-user/health-check && ./cronjob.sh
+# 0 * * * * ec2-user cd /home/ec2-user/health-check && ./bash/cronjob.sh
 
 
 def get_more_info(body):
     return [
         body,
         subprocess.check_output(
-            ["df -T"],
+            ["./bash/disk_usage.sh"],
         )
     ]
 
