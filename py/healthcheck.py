@@ -8,6 +8,13 @@ import requests
 # 0 * * * * ec2-user cd /home/ec2-user/health-check && ./bash/cronjob.sh
 
 
+HTML_TEMPLATE = """<pre>
+Result of health check
+======================
+%s
+</pre>"""
+
+
 def get_more_info(body):
     return [
         body,
@@ -21,15 +28,14 @@ def send_email(success, body):
     with open("local/mailgun.json") as jsonFile:
         creds = json.load(jsonFile)
     today_str = datetime.utcnow().strftime("%Y/%m/%d")
+    from_address = "HEALTH ROBOT <health.robot@%s>" % (
+        creds['mailgun_domain_name']
+    )
     subject = "HEALTHCHECK %s %s" % (
         today_str,
         "OK" if success else "FAILED",
     )
-    text = """
-Result of health check
-======================
-%s
-""" % "\n\n".join(get_more_info(body))
+    html = HTML_TEMPLATE % "\n\n".join(get_more_info(body))
     url = "https://api.mailgun.net/v3/%s/messages"
     return requests.post(
         url % creds['mailgun_domain_name'],
@@ -38,10 +44,10 @@ Result of health check
             creds['mailgun_api_key'],
         ),
         data={
-            "from": "HEALTH ROBOT <health.robot@%s>" % creds['mailgun_domain_name'],
+            "from": from_address,
             "to": "mpaulweeks@gmail.com",
             "subject": subject,
-            "text": text,
+            "html": html,
         },
     )
 
