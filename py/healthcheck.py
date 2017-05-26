@@ -2,6 +2,7 @@
 from datetime import datetime
 import json
 import subprocess
+import sys
 
 import requests
 
@@ -76,6 +77,7 @@ def is_special_time():
 
 
 if __name__ == "__main__":
+    force_email = len(sys.argv) > 2
     success, messages = perform_check()
-    if is_special_time() or not success:
+    if force_email or is_special_time() or not success:
         send_email(success, messages)
