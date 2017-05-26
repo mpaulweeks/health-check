@@ -77,7 +77,7 @@ def is_special_time():
 
 
 if __name__ == "__main__":
-    force_email = len(sys.argv) > 2
+    force_email = len(sys.argv) > 1
     success, messages = perform_check()
     if force_email or is_special_time() or not success:
         send_email(success, messages)
