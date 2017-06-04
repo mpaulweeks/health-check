@@ -80,7 +80,7 @@ def last_check_ok():
 
 def update_status(is_ok):
     status = {'ok': is_ok}
-    with open('local/status.json', 'rb') as jsonFile:
+    with open('local/status.json', 'wb') as jsonFile:
         json.dump(status, jsonFile)
 
 
