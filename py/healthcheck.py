@@ -72,12 +72,32 @@ def perform_check():
     return success, "\n".join(messages)
 
 
+def last_check_ok():
+    with open('local/status.json') as jsonFile:
+        status = json.load(jsonFile)
+    return status['ok'] or False
+
+
+def update_status(is_ok):
+    status = {'ok': is_ok}
+    with open('local/status.json', 'rb') as jsonFile:
+        json.dump(status, jsonFile)
+
+
 def is_special_time():
     return datetime.utcnow().hour == 7
 
 
 if __name__ == "__main__":
     force_email = len(sys.argv) > 1
+    was_last_check_ok = last_check_ok()
     success, messages = perform_check()
-    if force_email or is_special_time() or not success:
+    update_status(success)
+    should_send_email = (
+        force_email or
+        not success or
+        not was_last_check_ok or
+        is_special_time()
+    )
+    if should_send_email:
         send_email(success, messages)
