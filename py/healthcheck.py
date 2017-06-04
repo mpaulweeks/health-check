@@ -75,7 +75,7 @@ def perform_check():
 def last_check_ok():
     with open('local/status.json') as jsonFile:
         status = json.load(jsonFile)
-    return status['ok'] or False
+    return status.get('ok') or False
 
 
 def update_status(is_ok):
