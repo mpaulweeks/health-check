@@ -94,7 +94,8 @@ def check_files():
                 url,
             )
             messages.append(message)
-        except Exception:
+        except Exception as e:
+            print(e)
             success = False
             message = "%s ??? %s" % (
                 response.status_code,
@@ -124,7 +125,7 @@ if __name__ == "__main__":
     services_ok, service_messages = check_services()
     files_ok, file_messages = check_files()
     success = (services_ok and files_ok)
-    messages = service_messages + ['\n'] + file_messages
+    messages = "\n\n".join([service_messages, file_messages])
     update_status(success)
 
     force_email = len(sys.argv) > 1
