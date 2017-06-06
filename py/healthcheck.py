@@ -84,8 +84,8 @@ def check_files():
             date_str = response.json()
             for field_name in endpoint['date_field']:
                 date_str = date_str[field_name]
-            updated = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%fZ")
-            seconds = datetime.utcnow() - updated.total_seconds()
+            updated = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%f")
+            seconds = (datetime.utcnow() - updated).total_seconds()
             hours = int(seconds / 3600)
             success = success and hours <= 24
             message = "%s %sh %s" % (
