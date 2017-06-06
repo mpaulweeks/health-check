@@ -100,8 +100,7 @@ def check_files():
                 response.status_code,
                 url,
             )
-            messages.append()
-        success = success
+            messages.append(message)
     return success, "\n".join(messages)
 
 
