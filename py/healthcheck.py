@@ -53,7 +53,7 @@ def send_email(success, body):
     )
 
 
-def perform_check():
+def check_services():
     with open("docs/static/services.json") as jsonFile:
         endpoints = json.load(jsonFile)
     success = True
@@ -69,6 +69,39 @@ def perform_check():
             )
             messages.append(message)
             success = success and response.status_code == 200
+    return success, "\n".join(messages)
+
+
+def check_files():
+    with open("docs/static/files.json") as jsonFile:
+        endpoints = json.load(jsonFile)
+    success = True
+    messages = []
+    for endpoint in endpoints:
+        for url in endpoint['urls']:
+            response = requests.get(url)
+            try:
+                date_str = response.json()
+                for field_name in endpoint['date_field']:
+                    date_str = date_str[field_name]
+                updated = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%fZ")
+                seconds = datetime.utcnow() - updated.total_seconds()
+                hours = int(seconds / 3600)
+                success = success and hours <= 24
+                message = "%s %sh %s" % (
+                    response.status_code,
+                    hours,
+                    url,
+                )
+                messages.append(message)
+            except Exception:
+                success = False
+                message = "%s ??? %s" % (
+                    response.status_code,
+                    url,
+                )
+                messages.append()
+            success = success
     return success, "\n".join(messages)
 
 
@@ -89,10 +122,14 @@ def is_special_time():
 
 
 if __name__ == "__main__":
+    sevices_ok, service_messages = check_services()
+    files_ok, file_messages = check_files()
+    success = (services_ok and files_ok)
+    messages = service_messages + ['\n'] + file_messages
+    update_status(success)
+
     force_email = len(sys.argv) > 1
     was_last_check_ok = last_check_ok()
-    success, messages = perform_check()
-    update_status(success)
     should_send_email = (
         force_email or
         not success or

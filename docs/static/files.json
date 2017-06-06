@@ -1,0 +1,12 @@
+[
+  {
+    "tag": "sakuga-lottery",
+    "date_field": ["meta", "updated"],
+    "url": "https://s3.amazonaws.com/sakuga/data/animefightclub.min.json"
+  },
+  {
+    "tag": "edh-obscurity",
+    "date_field": ["updated"],
+    "url": "https://s3.amazonaws.com/edh-obscurity/edh_deck_counts.json"
+  }
+]
