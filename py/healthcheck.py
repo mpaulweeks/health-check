@@ -78,30 +78,30 @@ def check_files():
     success = True
     messages = []
     for endpoint in endpoints:
-        for url in endpoint['urls']:
-            response = requests.get(url)
-            try:
-                date_str = response.json()
-                for field_name in endpoint['date_field']:
-                    date_str = date_str[field_name]
-                updated = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%fZ")
-                seconds = datetime.utcnow() - updated.total_seconds()
-                hours = int(seconds / 3600)
-                success = success and hours <= 24
-                message = "%s %sh %s" % (
-                    response.status_code,
-                    hours,
-                    url,
-                )
-                messages.append(message)
-            except Exception:
-                success = False
-                message = "%s ??? %s" % (
-                    response.status_code,
-                    url,
-                )
-                messages.append()
-            success = success
+        url = endpoint['url']
+        response = requests.get(url)
+        try:
+            date_str = response.json()
+            for field_name in endpoint['date_field']:
+                date_str = date_str[field_name]
+            updated = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S.%fZ")
+            seconds = datetime.utcnow() - updated.total_seconds()
+            hours = int(seconds / 3600)
+            success = success and hours <= 24
+            message = "%s %sh %s" % (
+                response.status_code,
+                hours,
+                url,
+            )
+            messages.append(message)
+        except Exception:
+            success = False
+            message = "%s ??? %s" % (
+                response.status_code,
+                url,
+            )
+            messages.append()
+        success = success
     return success, "\n".join(messages)
 
 
