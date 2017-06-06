@@ -121,7 +121,7 @@ def is_special_time():
 
 
 if __name__ == "__main__":
-    sevices_ok, service_messages = check_services()
+    services_ok, service_messages = check_services()
     files_ok, file_messages = check_files()
     success = (services_ok and files_ok)
     messages = service_messages + ['\n'] + file_messages
