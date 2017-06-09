@@ -132,8 +132,8 @@ if __name__ == "__main__":
     was_last_check_ok = last_check_ok()
     should_send_email = (
         force_email or
-        not success or
-        not was_last_check_ok or
+        (not success) or
+        (not was_last_check_ok) or
         is_special_time()
     )
     if should_send_email:
