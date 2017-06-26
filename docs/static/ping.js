@@ -39,6 +39,34 @@ $(document).ready(function () {
       });
   }
 
+  function checkFile(file){
+    const name = file.name || file.tag;
+    $('#names').append(`<p><a href="${file.endpoints[0].url}">${name}</a></p>`);
+    $('#results').append(`<p id="${file.tag}">checking...</p>`);
+      file.endpoints.forEach(function (endpoint){
+        $.getJSON(endpoint.url, function(data){
+          const updatedAt = extractUpdatedAt(file, data);
+          endpoint.is_up = isNew(updatedAt);
+          endpoint.message = updatedAt;
+          refreshInfo(file);
+        });
+      });
+  }
+
+  function extractUpdatedAt(file, data){
+    let res = data;
+    file.date_field.forEach(function (attr){
+      res = res[attr];
+    });
+    return res;
+  }
+
+  function isNew(updatedAt){
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    return new Date(updatedAt) > yesterday;
+  }
+
   function createEndpoint(url){
     return {
       url: url,
@@ -54,6 +82,11 @@ $(document).ready(function () {
         service.endpoints.push(createEndpoint(url));
       });
       checkService(service);
+    });
+    data.files.forEach(function (file){
+      file.endpoints = [];
+      file.endpoints.push(createEndpoint(file.url));
+      checkFile(file);
     });
   });
 });
