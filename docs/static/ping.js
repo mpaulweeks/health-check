@@ -47,8 +47,8 @@ $(document).ready(function () {
     }
   }
 
-  $.getJSON("static/services.json", function(data){
-    data.forEach(function (service){
+  $.getJSON("static/data.json", function(data){
+    data.services.forEach(function (service){
       service.endpoints = [];
       service.urls.forEach(function (url){
         service.endpoints.push(createEndpoint(url));

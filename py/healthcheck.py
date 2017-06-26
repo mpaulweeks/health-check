@@ -53,9 +53,7 @@ def send_email(success, body):
     )
 
 
-def check_services():
-    with open("docs/static/services.json") as jsonFile:
-        endpoints = json.load(jsonFile)
+def check_services(endpoints):
     success = True
     messages = []
     for endpoint in endpoints:
@@ -72,9 +70,7 @@ def check_services():
     return success, "\n".join(messages)
 
 
-def check_files():
-    with open("docs/static/files.json") as jsonFile:
-        endpoints = json.load(jsonFile)
+def check_files(endpoints):
     success = True
     messages = []
     for endpoint in endpoints:
@@ -122,8 +118,10 @@ def is_special_time():
 
 
 if __name__ == "__main__":
-    services_ok, service_messages = check_services()
-    files_ok, file_messages = check_files()
+    with open("docs/static/data.json") as jsonFile:
+        data = json.load(jsonFile)
+    services_ok, service_messages = check_services(data['services'])
+    files_ok, file_messages = check_files(data['files'])
     success = (services_ok and files_ok)
     messages = "\n\n".join([service_messages, file_messages])
     update_status(success)
