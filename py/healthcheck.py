@@ -124,10 +124,10 @@ if __name__ == "__main__":
     files_ok, file_messages = check_files(data['files'])
     success = (services_ok and files_ok)
     messages = "\n\n".join([service_messages, file_messages])
-    update_status(success)
 
     force_email = len(sys.argv) > 1
     was_last_check_ok = last_check_ok()
+    update_status(success)
     should_send_email = (
         force_email or
         (not success) or
