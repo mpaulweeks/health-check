@@ -1,2 +1,2 @@
 #!/bin/sh
-df -T
+df 2>&1 | grep -v "Permission denied"
