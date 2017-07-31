@@ -6,6 +6,4 @@ cd py/
 zip -g ../lambda.zip lambda.py
 cd ../
 
-echo '{}' > local/status.json
-zip -g lambda.zip local/status.json
 zip -g lambda.zip docs/static/data.json

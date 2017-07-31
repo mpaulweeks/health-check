@@ -126,12 +126,12 @@ def run(force_email):
     success = (services_ok and files_ok)
     messages = "\n\n".join([service_messages, file_messages])
 
-    was_last_check_ok = last_check_ok()
-    update_status(success)
+    # was_last_check_ok = last_check_ok()
+    # update_status(success)
     should_send_email = (
         force_email or
         (not success) or
-        (not was_last_check_ok) or
+        # (not was_last_check_ok) or
         is_special_time()
     )
     if should_send_email:
