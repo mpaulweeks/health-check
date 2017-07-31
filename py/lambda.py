@@ -139,7 +139,8 @@ def run(force_email):
 
 
 def lambda_handler(json_input, context):
-    run(json_input['force_email'])
+    force_email = json_input.get('force_email')
+    run(force_email)
 
 
 if __name__ == "__main__":
