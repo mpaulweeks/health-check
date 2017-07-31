@@ -136,13 +136,14 @@ def run(force_email):
     )
     if should_send_email:
         send_email(success, messages)
+    return success
 
 
 def lambda_handler(json_input, context):
     force_email = json_input.get('force_email')
-    run(force_email)
+    return run(force_email)
 
 
 if __name__ == "__main__":
     force_email = len(sys.argv) > 1
-    run(force_email)
+    return run(force_email)
