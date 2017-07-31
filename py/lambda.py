@@ -146,4 +146,4 @@ def lambda_handler(json_input, context):
 
 if __name__ == "__main__":
     force_email = len(sys.argv) > 1
-    return run(force_email)
+    run(force_email)
