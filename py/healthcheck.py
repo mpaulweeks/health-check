@@ -21,7 +21,7 @@ def get_more_info(body):
         body,
         subprocess.check_output(
             ["./bash/disk_usage.sh"],
-        )
+        ),
     ]
 
 
@@ -117,7 +117,7 @@ def is_special_time():
     return datetime.utcnow().hour == 7
 
 
-if __name__ == "__main__":
+def run():
     with open("docs/static/data.json") as jsonFile:
         data = json.load(jsonFile)
     services_ok, service_messages = check_services(data['services'])
@@ -136,3 +136,6 @@ if __name__ == "__main__":
     )
     if should_send_email:
         send_email(success, messages)
+
+if __name__ == "__main__":
+    run()
