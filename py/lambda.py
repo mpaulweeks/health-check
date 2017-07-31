@@ -118,7 +118,7 @@ def is_special_time():
     return datetime.utcnow().hour == 7
 
 
-def run():
+def run(force_email):
     with open("docs/static/data.json") as jsonFile:
         data = json.load(jsonFile)
     services_ok, service_messages = check_services(data['services'])
@@ -126,7 +126,6 @@ def run():
     success = (services_ok and files_ok)
     messages = "\n\n".join([service_messages, file_messages])
 
-    force_email = len(sys.argv) > 1
     was_last_check_ok = last_check_ok()
     update_status(success)
     should_send_email = (
@@ -138,5 +137,11 @@ def run():
     if should_send_email:
         send_email(success, messages)
 
+
+def lambda_handler(json_input, context):
+    run(json_input['force_email'])
+
+
 if __name__ == "__main__":
-    run()
+    force_email = len(sys.argv) > 1
+    run(force_email)
