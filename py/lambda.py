@@ -1,8 +1,6 @@
 
 from datetime import datetime
-import json
 import os
-import subprocess
 import sys
 
 import requests
@@ -17,18 +15,11 @@ Result of health check
 </pre>"""
 
 
-def get_more_info(body):
-    return [
-        body,
-        subprocess.check_output(
-            ["./bash/disk_usage.sh"],
-        ),
-    ]
-
-
-def send_email(success, body):
+def send_email(success, body_messages):
     MAILGUN_API_KEY = os.environ['HEALTH_MAILGUN_API_KEY']
     MAILGUN_DOMAIN = os.environ['HEALTH_MAILGUN_DOMAIN']
+    EMAIL_TO = os.environ['HEALTH_EMAIL_TO']
+
     today_str = datetime.utcnow().strftime("%Y/%m/%d")
     from_address = "HEALTH ROBOT <health.robot@%s>" % (
         MAILGUN_DOMAIN
@@ -37,7 +28,7 @@ def send_email(success, body):
         today_str,
         "OK" if success else "FAILED",
     )
-    html = HTML_TEMPLATE % "\n\n".join(get_more_info(body))
+    html = HTML_TEMPLATE % "\n\n".join(body_messages)
     url = "https://api.mailgun.net/v3/%s/messages"
     return requests.post(
         url % MAILGUN_DOMAIN,
@@ -47,7 +38,7 @@ def send_email(success, body):
         ),
         data={
             "from": from_address,
-            "to": "mpaulweeks@gmail.com",
+            "to": EMAIL_TO,
             "subject": subject,
             "html": html,
         },
@@ -102,36 +93,26 @@ def check_files(endpoints):
     return success, "\n".join(messages)
 
 
-def last_check_ok():
-    with open('local/status.json') as jsonFile:
-        status = json.load(jsonFile)
-    return status.get('ok') or False
-
-
-def update_status(is_ok):
-    status = {'ok': is_ok}
-    with open('local/status.json', 'wb') as jsonFile:
-        json.dump(status, jsonFile)
-
-
 def is_special_time():
     return datetime.utcnow().hour == 7
 
 
+def get_endpoint_data():
+    DATA_URL = os.environ['HEALTH_DATA_URL']
+    r = requests.get(DATA_URL)
+    return r.json()
+
+
 def run(force_email):
-    with open("docs/static/data.json") as jsonFile:
-        data = json.load(jsonFile)
+    data = get_endpoint_data()
     services_ok, service_messages = check_services(data['services'])
     files_ok, file_messages = check_files(data['files'])
     success = (services_ok and files_ok)
-    messages = "\n\n".join([service_messages, file_messages])
+    messages = [service_messages, file_messages]
 
-    # was_last_check_ok = last_check_ok()
-    # update_status(success)
     should_send_email = (
         force_email or
         (not success) or
-        # (not was_last_check_ok) or
         is_special_time()
     )
     if should_send_email:
