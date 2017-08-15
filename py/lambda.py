@@ -15,7 +15,7 @@ Result of health check
 </pre>"""
 
 
-def send_email(success, body_messages):
+def send_email(success, html):
     MAILGUN_API_KEY = os.environ['HEALTH_MAILGUN_API_KEY']
     MAILGUN_DOMAIN = os.environ['HEALTH_MAILGUN_DOMAIN']
     EMAIL_TO = os.environ['HEALTH_EMAIL_TO']
@@ -28,7 +28,6 @@ def send_email(success, body_messages):
         today_str,
         "OK" if success else "FAILED",
     )
-    html = HTML_TEMPLATE % "\n\n".join(body_messages)
     url = "https://api.mailgun.net/v3/%s/messages"
     return requests.post(
         url % MAILGUN_DOMAIN,
@@ -72,6 +71,7 @@ def check_servers(endpoints):
     success = True
     messages = []
     for endpoint in endpoints:
+        url = endpoint['url']
         s, m, r = check_url(url)
         success = success and s
         m = "%s\n%s" % (m, r.text)
@@ -128,6 +128,7 @@ def run(force_email):
 
     success = (services_ok and files_ok and servers_ok)
     messages = [service_messages, file_messages, server_messages]
+    html = HTML_TEMPLATE % "\n\n".join(messages)
 
     should_send_email = (
         force_email or
@@ -135,7 +136,7 @@ def run(force_email):
         is_special_time()
     )
     if should_send_email:
-        send_email(success, messages)
+        send_email(success, html)
     return success
 
 
