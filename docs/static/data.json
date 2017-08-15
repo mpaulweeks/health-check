@@ -45,6 +45,13 @@
       "urls": [
         "http://sfv.fgc.mpaulweeks.com/health"
       ]
+    },
+    {
+      "tag": "postboard",
+      "name": "postboard",
+      "urls": [
+        "http://postboard.mpaulweeks.com/health"
+      ]
     }
   ]
 }
