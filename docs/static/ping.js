@@ -21,8 +21,8 @@ $(document).ready(function () {
   }
 
   function checkService(service){
-    $('#names').append('<p><a href="' + service.endpoints[0].url + '">' + service.name + '</a></p>');
-    $('#results').append('<p id="' + service.tag + '">checking...</p>');
+    $('#names').append(`<p><a href="${service.endpoints[0].url}">${service.name}</a></p>`);
+    $('#results').append(`<p id="${service.tag}">checking...</p>`);
       service.endpoints.forEach(function (endpoint){
         $.ajax({
           url: endpoint.url,
@@ -51,6 +51,31 @@ $(document).ready(function () {
           refreshInfo(file);
         });
       });
+  }
+
+  function checkServer(server){
+    const name = server.name || server.tag;
+    $('#names').append(`<p><a href="${server.endpoints[0].url}">${name}</a></p>`);
+    $('#results').append(`<p id="${server.tag}">checking...</p>`);
+      server.endpoints.forEach(function (endpoint){
+        $.ajax({
+          url: endpoint.url,
+          type: 'GET',
+        }).success(function (data){
+          endpoint.is_up = true;
+          endpoint.message = data;
+          refreshInfo(server);
+        }).fail(function (data){
+          endpoint.is_up = false;
+          endpoint.message = data;
+          refreshInfo(server);
+        });
+      });
+  }
+
+  function addBuffer(){
+    $('#names').append('<br/>');
+    $('#results').append('<br/>');
   }
 
   function extractUpdatedAt(file, data){
@@ -83,10 +108,15 @@ $(document).ready(function () {
       });
       checkService(service);
     });
+    addBuffer();
     data.files.forEach(function (file){
-      file.endpoints = [];
-      file.endpoints.push(createEndpoint(file.url));
+      file.endpoints = [createEndpoint(file.url)];
       checkFile(file);
+    });
+    addBuffer();
+    data.servers.forEach(function (server){
+      server.endpoints = [createEndpoint(server.url)];
+      checkServer(server);
     });
   });
 });
