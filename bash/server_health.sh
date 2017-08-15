@@ -1,2 +1,3 @@
+touch server.pid
 source venv/bin/activate
-FLASK_PORT=5001 python -m py.server
+HEALTH_PORT=5100 python -m py.server

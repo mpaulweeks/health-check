@@ -1,0 +1,1 @@
+kill `< server.pid`
