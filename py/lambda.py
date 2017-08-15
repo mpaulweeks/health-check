@@ -45,21 +45,38 @@ def send_email(success, body_messages):
     )
 
 
+def check_url(url):
+    response = requests.get(url)
+    ms = int(response.elapsed.total_seconds() * 1000)
+    message = "%s %sms %s" % (
+        response.status_code,
+        ms,
+        url,
+    )
+    success = response.status_code == 200
+    return success, message, response
+
+
 def check_services(endpoints):
     success = True
     messages = []
     for endpoint in endpoints:
         for url in endpoint['urls']:
-            response = requests.get(url)
-            ms = int(response.elapsed.total_seconds() * 1000)
-            message = "%s %sms %s" % (
-                response.status_code,
-                ms,
-                url,
-            )
-            messages.append(message)
-            success = success and response.status_code == 200
+            s, m, _ = check_url(url)
+            success = success and s
+            messages.append(m)
     return success, "\n".join(messages)
+
+
+def check_servers(endpoints):
+    success = True
+    messages = []
+    for endpoint in endpoints:
+        s, m, r = check_url(url)
+        success = success and s
+        m = "%s\n%s" % (m, r.text)
+        messages.append(m)
+    return success, "\n\n".join(messages)
 
 
 def check_files(endpoints):
@@ -107,8 +124,10 @@ def run(force_email):
     data = get_endpoint_data()
     services_ok, service_messages = check_services(data['services'])
     files_ok, file_messages = check_files(data['files'])
-    success = (services_ok and files_ok)
-    messages = [service_messages, file_messages]
+    servers_ok, server_messages = check_servers(data['servers'])
+
+    success = (services_ok and files_ok and servers_ok)
+    messages = [service_messages, file_messages, server_messages]
 
     should_send_email = (
         force_email or

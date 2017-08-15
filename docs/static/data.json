@@ -1,4 +1,10 @@
 {
+  "servers": [
+    {
+      "tag": "maryo",
+      "url": "http://maryo.mpaulweeks.com/health"
+    }
+  ],
   "files": [
     {
       "tag": "sakuga-lottery",
