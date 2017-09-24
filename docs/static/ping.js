@@ -21,7 +21,7 @@ $(document).ready(function () {
   }
 
   function checkService(service){
-    $('#names').append(`<p><a href="${service.endpoints[0].url}">${service.name}</a></p>`);
+    $('#names').append(`<p><a target="_blank" href="${service.endpoints[0].url}">${service.name}</a></p>`);
     $('#results').append(`<p id="${service.tag}">checking...</p>`);
       service.endpoints.forEach(function (endpoint){
         $.ajax({
@@ -41,7 +41,7 @@ $(document).ready(function () {
 
   function checkFile(file){
     const name = file.name || file.tag;
-    $('#names').append(`<p><a href="${file.endpoints[0].url}">${name}</a></p>`);
+    $('#names').append(`<p><a target="_blank" href="${file.endpoints[0].url}">${name}</a></p>`);
     $('#results').append(`<p id="${file.tag}">checking...</p>`);
       file.endpoints.forEach(function (endpoint){
         $.getJSON(endpoint.url, function(data){
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
   function checkServer(server){
     const name = server.name || server.tag;
-    $('#names').append(`<p><a target="blank" href="${server.endpoints[0].url}">${name}</a></p>`);
+    $('#names').append(`<p><a target="_blank" href="${server.endpoints[0].url}">${name}</a></p>`);
     $('#results').append(`<p id="${server.tag}">checking...</p>`);
       server.endpoints.forEach(function (endpoint){
         $.ajax({
