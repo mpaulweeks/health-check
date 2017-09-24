@@ -19,6 +19,13 @@
   ],
   "services": [
     {
+      "tag": "static",
+      "name": "static.mpaulweeks.com",
+      "urls": [
+        "http://static.mpaulweeks.com"
+      ]
+    },
+    {
       "tag": "cat-herder",
       "name": "cat herder",
       "urls": [
