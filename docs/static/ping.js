@@ -55,7 +55,7 @@ $(document).ready(function () {
 
   function checkServer(server){
     const name = server.name || server.tag;
-    $('#names').append(`<p><a href="${server.endpoints[0].url}">${name}</a></p>`);
+    $('#names').append(`<p><a target="blank" href="${server.endpoints[0].url}">${name}</a></p>`);
     $('#results').append(`<p id="${server.tag}">checking...</p>`);
       server.endpoints.forEach(function (endpoint){
         $.ajax({
