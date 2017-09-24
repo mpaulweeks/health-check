@@ -52,7 +52,7 @@ def check_url(url):
         ms,
         url,
     )
-    success = response.status_code == 200
+    success = response.status_code in [200, 204]
     return success, message, response
 
 
