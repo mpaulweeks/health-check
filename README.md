@@ -19,7 +19,4 @@ Create new lambda zip with `./bash/generate_lambda.sh`
 
 ## todo
 
-- Convert to node.js to share all code between FE and BE?
-- Lambda?
-  - https://github.com/nficano/python-lambda
-  - https://www.expeditedssl.com/aws-lambda-in-plain-english
+- Convert lambda job to node.js to share code between FE and BE
