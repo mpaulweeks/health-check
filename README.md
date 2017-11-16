@@ -3,13 +3,22 @@ Static page and lambda job for health-checking my websites
 
 ## Deploy
 
+Health-Check has three services:
+- a static website that checks endpoints via AJAX
+- an automated Lambda job that checks endpoints via python request, sends an email on failure
+- a thin server running on ec2 to report memory information
+
 ### Static site
 
-Static files are located in `doc/`
+Static files are located in [docs/](/docs)
 
 ### Lambda job
 
-Create new lambda zip with `./bash/generate_lambda.sh`
+Create new Lambda zip with `./bash/generate_lambda.sh`, then upload the zip manually
+
+Services are specified in [docs/static/data.json](docs/static/data.json)
+
+Lambda job pulls the latest endpoints directly from [GitHub](https://raw.githubusercontent.com/mpaulweeks/health-check/master/docs/static/data.json)
 
 ### Server health
 ```
