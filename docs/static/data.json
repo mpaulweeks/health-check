@@ -59,6 +59,13 @@
       "urls": [
         "http://postboard.mpaulweeks.com/health"
       ]
+    },
+    {
+      "tag": "double-biscuit-api",
+      "name": "double-biscuit-api",
+      "urls": [
+        "http://double-biscuit-api.mpaulweeks.com/health"
+      ]
     }
   ]
 }
