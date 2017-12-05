@@ -66,6 +66,13 @@
       "urls": [
         "http://double-biscuit-api.mpaulweeks.com/health"
       ]
+    },
+    {
+      "tag": "mashup",
+      "name": "mashup",
+      "urls": [
+        "http://health.mashup.animefight.club"
+      ]
     }
   ]
 }
