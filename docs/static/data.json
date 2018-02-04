@@ -15,6 +15,11 @@
       "tag": "edh-obscurity",
       "date_field": ["updated"],
       "url": "https://s3.amazonaws.com/edh-obscurity/edh_deck_counts.json"
+    },
+    {
+      "tag": "changepurse",
+      "date_field": ["updated"],
+      "url": "https://mpaulweeks.github.io/changepurse/coinmarketcap.json"
     }
   ],
   "services": [
