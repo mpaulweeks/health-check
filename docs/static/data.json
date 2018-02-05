@@ -31,6 +31,20 @@
       ]
     },
     {
+      "tag": "postboard",
+      "name": "postboard",
+      "urls": [
+        "http://postboard.mpaulweeks.com/health"
+      ]
+    },
+    {
+      "tag": "socket-lobby",
+      "name": "socket-lobby",
+      "urls": [
+        "http://socket-lobby.mpaulweeks.com/api/health"
+      ]
+    },
+    {
       "tag": "cat-herder",
       "name": "cat herder",
       "urls": [
@@ -56,13 +70,6 @@
       "name": "sfv.fgc.mpaulweeks.com",
       "urls": [
         "http://sfv.fgc.mpaulweeks.com/health"
-      ]
-    },
-    {
-      "tag": "postboard",
-      "name": "postboard",
-      "urls": [
-        "http://postboard.mpaulweeks.com/health"
       ]
     },
     {
