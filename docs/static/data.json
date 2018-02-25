@@ -20,6 +20,11 @@
       "tag": "changepurse",
       "date_field": ["updated"],
       "url": "https://mpaulweeks.github.io/changepurse/coinmarketcap.json"
+    },
+    {
+      "tag": "mtg-toolbox",
+      "date_field": ["updated"],
+      "url": "http://autocard.mpaulweeks.com/json/version.json"
     }
   ],
   "services": [
