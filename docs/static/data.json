@@ -76,6 +76,13 @@
       "urls": [
         "http://www.mashupby.me/api/health"
       ]
+    },
+    {
+      "tag": "autocard",
+      "name": "autocard",
+      "urls": [
+        "https://autocard.mpaulweeks.com/"
+      ]
     }
   ]
 }
