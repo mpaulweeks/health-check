@@ -1,8 +1,8 @@
 
-const elmNames = document.getElementById("names")
-const elmResults = document.getElementById("results")
-const elmDetails = document.getElementById("details")
-const showDetails = window.location.href.includes("details")
+const elmNames = document.getElementById("names");
+const elmResults = document.getElementById("results");
+const elmDetails = document.getElementById("details");
+const showDetails = window.location.href.includes("details");
 
 function refreshInfo(service){
   var details = document.createElement('div');
@@ -14,16 +14,16 @@ function refreshInfo(service){
     } else {
       is_up = is_up && endpoint.is_up;
       if (showDetails) {
-        const newDiv = document.createElement('div')
-        newDiv.appendChild(document.createElement('div')).innerText = endpoint.url
-        newDiv.appendChild(document.createElement('div')).innerText = endpoint.message
-        newDiv.appendChild(document.createElement('hr'))
-        details.appendChild(newDiv)
+        const newDiv = document.createElement('div');
+        newDiv.appendChild(document.createElement('div')).innerText = endpoint.url;
+        newDiv.appendChild(document.createElement('div')).innerText = endpoint.message;
+        newDiv.appendChild(document.createElement('hr'));
+        details.appendChild(newDiv);
       }
     }
   });
   if (is_done){
-    elmDetails.appendChild(details)
+    elmDetails.appendChild(details);
     var result = is_up ? 'OK' : 'DOWN';
     document.getElementById(service.tag).innerHTML = result;
   }
