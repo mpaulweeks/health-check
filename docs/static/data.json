@@ -2,7 +2,7 @@
   "servers": [
     {
       "tag": "maryo",
-      "url": "http://maryo.mpaulweeks.com/health"
+      "url": "https://maryo.mpaulweeks.com/health"
     }
   ],
   "files": [
@@ -24,7 +24,7 @@
     {
       "tag": "mtg-toolbox",
       "date_field": ["updated"],
-      "url": "http://autocard.mpaulweeks.com/json/version.json"
+      "url": "https://autocard.mpaulweeks.com/json/version.json"
     }
   ],
   "services": [
@@ -32,42 +32,42 @@
       "tag": "static",
       "name": "static.mpaulweeks.com",
       "urls": [
-        "http://static.mpaulweeks.com"
+        "https://static.mpaulweeks.com"
       ]
     },
     {
       "tag": "postboard",
       "name": "postboard",
       "urls": [
-        "http://postboard.mpaulweeks.com/health"
+        "https://postboard.mpaulweeks.com/health"
       ]
     },
     {
       "tag": "socket-lobby",
       "name": "socket-lobby",
       "urls": [
-        "http://socket-lobby.mpaulweeks.com/api/health"
+        "https://socket-lobby.mpaulweeks.com/api/health"
       ]
     },
     {
       "tag": "cat-herder",
       "name": "cat herder",
       "urls": [
-        "http://cat-herder.mpaulweeks.com"
+        "https://cat-herder.mpaulweeks.com"
       ]
     },
     {
       "tag": "type4stack",
       "name": "type4stack",
       "urls": [
-        "http://type4.mpaulweeks.com/"
+        "https://type4.mpaulweeks.com/"
       ]
     },
     {
       "tag": "sfv-fgc",
       "name": "sfv.fgc.mpaulweeks.com",
       "urls": [
-        "http://sfv.fgc.mpaulweeks.com/health"
+        "https://sfv.fgc.mpaulweeks.com/health"
       ]
     },
     {
