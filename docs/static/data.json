@@ -24,7 +24,7 @@
     {
       "tag": "mtg-toolbox",
       "date_field": ["updated"],
-      "url": "https://autocard.mpaulweeks.com/json/version.json"
+      "url": "https://magicautocard.info/json/version.json"
     }
   ],
   "services": [
@@ -81,7 +81,7 @@
       "tag": "autocard",
       "name": "autocard",
       "urls": [
-        "https://autocard.mpaulweeks.com/"
+        "https://magicautocard.info/"
       ]
     }
   ]
