@@ -22,9 +22,9 @@
       "url": "https://mpaulweeks.github.io/changepurse/coinmarketcap.json"
     },
     {
-      "tag": "mtg-toolbox",
+      "tag": "mtgify.org/json",
       "date_field": ["updated"],
-      "url": "https://magicautocard.info/json/version.json"
+      "url": "https://mtgify.org/json/version.json"
     }
   ],
   "services": [
@@ -78,10 +78,10 @@
       ]
     },
     {
-      "tag": "autocard",
-      "name": "autocard",
+      "tag": "mtgify.org",
+      "name": "mtgify.org",
       "urls": [
-        "https://magicautocard.info/"
+        "https://mtgify.org"
       ]
     }
   ]
