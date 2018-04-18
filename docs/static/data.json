@@ -83,6 +83,20 @@
       "urls": [
         "https://mtgify.org"
       ]
+    },
+    {
+      "tag": "poll.anny.nyc",
+      "name": "poll.anny.nyc",
+      "urls": [
+        "http://poll.anny.nyc"
+      ]
+    },
+    {
+      "tag": "poll.anny.nyc/api",
+      "name": "poll.anny.nyc/api",
+      "urls": [
+        "http://poll.anny.nyc/api/event/latest"
+      ]
     }
   ]
 }
