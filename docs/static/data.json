@@ -92,6 +92,13 @@
       ]
     },
     {
+      "tag": "poll.anny.nyc/admin",
+      "name": "poll.anny.nyc/admin",
+      "urls": [
+        "http://poll.anny.nyc/admin"
+      ]
+    },
+    {
       "tag": "poll.anny.nyc/api",
       "name": "poll.anny.nyc/api",
       "urls": [
