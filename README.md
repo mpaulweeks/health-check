@@ -34,4 +34,3 @@ See `install/nginx.conf`
 ## todo
 
 - Convert lambda job to node.js to share code between FE and BE
-- Use different requirements for lambda vs server

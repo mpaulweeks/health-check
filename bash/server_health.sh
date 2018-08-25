@@ -1,3 +1,3 @@
 touch server.pid
-source venv/bin/activate
+source venv_server/bin/activate
 HEALTH_PORT=5100 python -m py.server
