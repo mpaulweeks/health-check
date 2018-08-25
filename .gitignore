@@ -1,5 +1,5 @@
 *.pyc
 
 venv/
-lambda.zip
+build/
 server.pid

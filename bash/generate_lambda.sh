@@ -1,7 +1,9 @@
-cd venv/lib/python2.7/site-packages/
-zip -r9 ../../../../lambda.zip *
+# create zip of all python packages in our virtualenv
+cd venv/lib/python3.6/site-packages/
+zip -r9 ../../../../build/lambda.zip *
 cd ../../../../
 
+# add the lambda script to the zip
 cd py/
-zip -g ../lambda.zip lambda.py
+zip -g ../build/lambda.zip lambda.py
 cd ../

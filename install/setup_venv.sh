@@ -1,6 +1,7 @@
 #!/bin/sh
-virtualenv venv
-source venv/bin/activate
+python3 -m venv venv
+. venv/bin/activate
 pip install --upgrade pip
 pip install requests[security]
 pip install Flask
+pip install boto3
