@@ -1,2 +1,2 @@
-source venv_dev/bin/activate
+source venv_deploy/bin/activate
 python -m py.deploy

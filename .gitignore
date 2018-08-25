@@ -1,6 +1,5 @@
 *.pyc
 
-venv/
 venv_*/
 build/
 server.pid
