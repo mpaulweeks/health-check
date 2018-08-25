@@ -4,33 +4,46 @@
 
 Static page and lambda job for health-checking my websites
 
-## Deploy
+## Setup
 
 Health-Check has three services:
 - a static website that checks endpoints via AJAX
-- an automated Lambda job that checks endpoints via python request, sends an email on failure
 - a thin server running on ec2 to report memory information
+- an automated Lambda job that checks endpoints via python request, sends an email on failure
+
+On repo clone, run the following:
+```
+.bash/bg_health.sh
+```
 
 ### Static site
 
 Static files are located in [docs/](/docs)
 
-### Lambda job
+Deploy by pushing the new files to `master`, GitHub pages will update internally
 
-Create new Lambda zip with `./bash/generate_lambda.sh`, then upload the zip manually
+### Server health API
 
-Services are specified in [docs/static/data.json](docs/static/data.json)
+Server code is located in [py/server.py](/py/server.py)
 
-Lambda job pulls the latest endpoints directly from [GitHub](https://raw.githubusercontent.com/mpaulweeks/health-check/master/docs/static/data.json)
-
-### Server health
+Deploy by cloning the code onto an EC2 server and running the following:
 ```
 .install/setup_venv.sh
 .bash/bg_health.sh
 ```
 
-See `install/nginx.conf`
+See also `install/nginx.conf`
 
-## todo
+### Lambda job
+
+The lambda job itself is contained in [py/lambda.py](/py/lambda.py)
+
+Services are specified in [docs/static/data.json](docs/static/data.json)
+
+Lambda job pulls the latest endpoints directly from [GitHub](https://raw.githubusercontent.com/mpaulweeks/health-check/master/docs/static/data.json)
+
+Deploy by pushing to master. CircleCI will deploy the lambda following the instructions in [.circleci/config.yaml](/.circleci/config.yaml)
+
+## Todo
 
 - Convert lambda job to node.js to share code between FE and BE
