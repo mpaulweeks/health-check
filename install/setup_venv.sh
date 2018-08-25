@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 function create_venv()
 {
     local venv_name=$1
