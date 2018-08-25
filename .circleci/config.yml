@@ -26,12 +26,6 @@ jobs:
             ./install/setup_venv.sh
 
       - run:
-          name: run tests
-          command: |
-            . venv/bin/activate
-            python manage.py test
-
-      - run:
           name: deploy to lambda
           command: |
             ./bash/generate_lambda.sh
