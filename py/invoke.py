@@ -1,3 +1,4 @@
+import json
 from .aws import (
     FUNCTION_NAME,
     get_client,
@@ -6,10 +7,14 @@ from .aws import (
 
 def invoke():
     lambda_client = get_client()
-    result = lambda_client.invoke(
+    res = lambda_client.invoke(
         FunctionName=FUNCTION_NAME,
     )
-    print(result)
+    res_json = json.loads(res['Payload'].read().decode("utf-8"))
+    if res_json:
+        print(res_json)
+    else:
+        raise Exception("health check failed")
 
 
 if __name__ == "__main__":
