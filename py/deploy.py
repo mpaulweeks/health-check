@@ -1,12 +1,15 @@
-import boto3
+from .aws import (
+    FUNCTION_NAME,
+    get_client,
+)
 
 
 def deploy():
-    lambda_client = boto3.client('lambda', 'us-west-2')
+    lambda_client = get_client()
     with open('build/lambda.zip', 'rb') as f:
         zipped_code = f.read()
     lambda_client.update_function_code(
-        FunctionName='health',
+        FunctionName=FUNCTION_NAME,
         ZipFile=zipped_code,
     )
 

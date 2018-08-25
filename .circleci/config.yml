@@ -30,3 +30,4 @@ jobs:
           command: |
             ./bash/generate_lambda.sh
             ./bash/deploy_lambda.sh
+            ./bash/invoke_lambda.sh
