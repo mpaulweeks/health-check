@@ -42,7 +42,7 @@ Services are specified in [docs/static/data.json](docs/static/data.json)
 
 Lambda job pulls the latest endpoints directly from [GitHub](https://raw.githubusercontent.com/mpaulweeks/health-check/master/docs/static/data.json)
 
-Deploy by pushing to master. CircleCI will deploy the lambda following the instructions in [.circleci/config.yaml](/.circleci/config.yaml)
+Deploy by pushing to master. CircleCI will deploy the lambda following the instructions in [.circleci/config.yml](/.circleci/config.yml)
 
 ## Todo
 
