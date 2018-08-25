@@ -4,4 +4,4 @@ rm -rf venv_*
 git pull
 
 ./install/setup_venv.sh
-./bg_health.sh
+./bash/bg_health.sh
