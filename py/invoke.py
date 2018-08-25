@@ -4,11 +4,19 @@ from .aws import (
     get_client,
 )
 
+FORCE_TEST = """
+{
+  "force_email": true
+}
+""".strip()
+
 
 def invoke():
     lambda_client = get_client()
     res = lambda_client.invoke(
         FunctionName=FUNCTION_NAME,
+        InvocationType="RequestResponse",
+        Payload=FORCE_TEST,
     )
     res_json = json.loads(res['Payload'].read().decode("utf-8"))
     if res_json:
