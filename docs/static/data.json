@@ -7,6 +7,11 @@
   ],
   "files": [
     {
+      "tag": "archive",
+      "date_field": ["meta", "updated"],
+      "url": "https://s3.amazonaws.com/mpaulweeks-archive/data.json"
+    },
+    {
       "tag": "sakuga-lottery",
       "date_field": ["meta", "updated"],
       "url": "https://s3.amazonaws.com/sakuga/data/animefightclub.min.json"
