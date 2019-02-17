@@ -45,15 +45,18 @@ def send_email(success, html):
 
 
 def check_url(url):
-    response = requests.get(url)
-    ms = int(response.elapsed.total_seconds() * 1000)
-    message = "%s %sms %s" % (
-        response.status_code,
-        ms,
-        url,
-    )
-    success = response.status_code in [200, 204]
-    return success, message, response
+    try:
+        response = requests.get(url)
+        ms = int(response.elapsed.total_seconds() * 1000)
+        message = "%s %sms %s" % (
+            response.status_code,
+            ms,
+            url,
+        )
+        success = response.status_code in [200, 204]
+        return success, message, response
+    except Exception as e:
+        return False, str(e), None
 
 
 def check_services(endpoints):
