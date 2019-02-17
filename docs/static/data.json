@@ -76,13 +76,6 @@
       ]
     },
     {
-      "tag": "mashup",
-      "name": "mashup",
-      "urls": [
-        "http://www.mashupby.me/api/health"
-      ]
-    },
-    {
       "tag": "mtgify.org",
       "name": "mtgify.org",
       "urls": [
