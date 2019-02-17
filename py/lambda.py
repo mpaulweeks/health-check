@@ -66,6 +66,8 @@ def check_services(endpoints):
         for url in endpoint['urls']:
             s, m, _ = check_url(url)
             success = success and s
+            if not s:
+                print(m)
             messages.append(m)
     return success, "\n".join(messages)
 
@@ -78,6 +80,8 @@ def check_servers(endpoints):
         s, m, r = check_url(url)
         success = success and s
         m = "%s\n%s" % (m, r.text)
+        if not success:
+            print(m)
         messages.append(m)
     return success, "\n\n".join(messages)
 
@@ -96,20 +100,21 @@ def check_files(endpoints):
             seconds = (datetime.utcnow() - updated).total_seconds()
             hours = int(seconds / 3600)
             success = success and hours <= 24
-            message = "%s %sh %s" % (
+            m = "%s %sh %s" % (
                 response.status_code,
                 hours,
                 url,
             )
-            messages.append(message)
         except Exception as e:
             print(e)
             success = False
-            message = "%s ??? %s" % (
+            m = "%s ??? %s" % (
                 response.status_code,
                 url,
             )
-            messages.append(message)
+        if not success:
+            print(m)
+        messages.append(m)
     return success, "\n".join(messages)
 
 
