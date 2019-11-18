@@ -69,13 +69,6 @@
       ]
     },
     {
-      "tag": "sfv-fgc",
-      "name": "sfv.fgc.mpaulweeks.com",
-      "urls": [
-        "https://sfv.fgc.mpaulweeks.com/health"
-      ]
-    },
-    {
       "tag": "mtgify.org",
       "name": "mtgify.org",
       "urls": [
