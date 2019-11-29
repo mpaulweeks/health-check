@@ -24,7 +24,7 @@
     {
       "tag": "changepurse",
       "date_field": ["updated"],
-      "url": "https://mpaulweeks.github.io/changepurse/coinmarketcap.json"
+      "url": "https://mpaulweeks.github.io/changepurse/price.json"
     },
     {
       "tag": "mtgify.org/json",
