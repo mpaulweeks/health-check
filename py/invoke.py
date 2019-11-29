@@ -18,10 +18,14 @@ def invoke():
         InvocationType="RequestResponse",
         Payload=FORCE_TEST,
     )
-    res_json = json.loads(res['Payload'].read().decode("utf-8"))
+    payload = res['Payload']
+    json_str = payload.read().decode("utf-8")
+    res_json = json.loads(json_str)
     if res_json:
         print(res_json)
     else:
+        print(payload)
+        print(json_str)
         raise Exception("health check failed")
 
 
