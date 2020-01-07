@@ -13,7 +13,7 @@ function refreshInfo(service){
       is_done = false;
     } else {
       is_up = is_up && endpoint.is_up;
-      if (showDetails) {
+      if (!is_up && showDetails) {
         const newDiv = document.createElement('div');
         newDiv.appendChild(document.createElement('div')).innerText = endpoint.url;
         newDiv.appendChild(document.createElement('div')).innerText = endpoint.message;
