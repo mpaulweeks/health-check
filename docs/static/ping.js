@@ -4,6 +4,10 @@ const elmResults = document.getElementById("results");
 const elmDetails = document.getElementById("details");
 const showDetails = window.location.href.includes("details");
 
+function fetchLatest(url) {
+   return fetch(url + '?v=' + new Date().getTime());
+}
+
 function refreshInfo(service){
   var details = document.createElement('div');
   var is_up = true;
@@ -20,6 +24,10 @@ function refreshInfo(service){
         newDiv.appendChild(document.createElement('hr'));
         details.appendChild(newDiv);
       }
+      if (!is_up) {
+        console.log(endpoint.url);
+        console.log(endpoint.message);
+      }
     }
   });
   if (is_done){
@@ -34,7 +42,7 @@ function checkFile(file){
   elmNames.innerHTML += `<p><a target="_blank" href="${file.endpoints[0].url}">${name}</a></p>`;
   elmResults.innerHTML += `<p id="${file.tag}">checking...</p>`;
   file.endpoints.forEach(function (endpoint){
-    fetch(endpoint.url)
+    fetchLatest(endpoint.url)
       .then(resp => resp.json())
       .then(data => {
         const updatedAt = extractUpdatedAt(file, data);
@@ -55,7 +63,7 @@ function checkApi(api){
   elmNames.innerHTML += `<p><a target="_blank" href="${api.endpoints[0].url}">${name}</a></p>`;
   elmResults.innerHTML += `<p id="${api.tag}">checking...</p>`;
   api.endpoints.forEach(function (endpoint){
-    fetch(endpoint.url)
+    fetchLatest(endpoint.url)
       .then(resp => resp.text())
       .then(text => {
         endpoint.is_up = true;
@@ -97,7 +105,7 @@ function createEndpoint(url){
   }
 }
 
-fetch("static/data.json")
+fetchLatest("static/data.json")
   .then(resp => resp.json())
   .then(data => {
     data.services.forEach(function (service){
