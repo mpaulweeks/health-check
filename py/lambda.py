@@ -46,7 +46,7 @@ def send_email(success, html):
 
 def check_url(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url + "?v=" + datetime.utcnow().total_seconds())
         ms = int(response.elapsed.total_seconds() * 1000)
         message = "%s %sms %s" % (
             response.status_code,
