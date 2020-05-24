@@ -25,11 +25,6 @@
       "tag": "changepurse",
       "date_field": ["updated"],
       "url": "https://mpaulweeks.github.io/changepurse/price.json"
-    },
-    {
-      "tag": "mtgify.org/json",
-      "date_field": ["updated"],
-      "url": "https://mtgify.org/json/version.json"
     }
   ],
   "services": [
@@ -73,6 +68,13 @@
       "name": "mtgify.org",
       "urls": [
         "https://mtgify.org"
+      ]
+    },
+    {
+      "tag": "mtgify.org/json",
+      "name": "mtgify.org/json",
+      "urls": [
+        "https://mtgify.org/json/version.json"
       ]
     },
     {
