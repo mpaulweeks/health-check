@@ -6,7 +6,7 @@ const showDetails = window.location.href.includes("details");
 
 function fetchLatest(url, noCors) {
    return fetch(url + '?v=' + new Date().getTime(), {
-      cors: noCors ? 'no-cors' : 'cors',
+      mode: noCors ? 'no-cors' : 'cors',
    });
 }
 
@@ -44,7 +44,7 @@ function checkFile(file){
   elmNames.innerHTML += `<p><a target="_blank" href="${file.endpoints[0].url}">${name}</a></p>`;
   elmResults.innerHTML += `<p id="${file.tag}">checking...</p>`;
   file.endpoints.forEach(function (endpoint){
-    fetchLatest(endpoint.url)
+    fetchLatest(endpoint.url, file.noCors)
       .then(resp => resp.json())
       .then(data => {
         const updatedAt = extractUpdatedAt(file, data);
@@ -65,7 +65,7 @@ function checkApi(api){
   elmNames.innerHTML += `<p><a target="_blank" href="${api.endpoints[0].url}">${name}</a></p>`;
   elmResults.innerHTML += `<p id="${api.tag}">checking...</p>`;
   api.endpoints.forEach(function (endpoint){
-    fetchLatest(endpoint.url, endpoint.noCors)
+    fetchLatest(endpoint.url, api.noCors)
       .then(resp => resp.text())
       .then(text => {
         endpoint.is_up = true;
