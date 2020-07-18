@@ -43,13 +43,6 @@
       ]
     },
     {
-      "tag": "socket-lobby",
-      "name": "socket-lobby",
-      "urls": [
-        "https://socket-lobby.mpaulweeks.com/api/health"
-      ]
-    },
-    {
       "tag": "cat-herder",
       "name": "cat herder",
       "urls": [
@@ -76,6 +69,13 @@
       "urls": [
         "https://mtgify.org/json/version.json"
       ]
+    },
+    {
+      "tag": "toughlovearena.com",
+      "name": "toughlovearena.com",
+      "urls": [
+        "https://toughlovearena.com/maryo"
+       ]
     },
     {
       "tag": "maryo.toughlovearena.com",
