@@ -71,7 +71,7 @@
       ]
     },
     {
-      "no-cors": true,
+      "noCors": true,
       "tag": "toughlovearena.com",
       "name": "toughlovearena.com",
       "urls": [
