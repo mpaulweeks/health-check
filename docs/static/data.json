@@ -86,6 +86,7 @@
        ]
     },
     {
+      "noCors": true,
       "tag": "poll.anny.nyc",
       "name": "poll.anny.nyc",
       "urls": [
@@ -93,6 +94,7 @@
       ]
     },
     {
+      "noCors": true,
       "tag": "poll.anny.nyc/admin",
       "name": "poll.anny.nyc/admin",
       "urls": [
@@ -100,6 +102,7 @@
       ]
     },
     {
+      "noCors": true,
       "tag": "poll.anny.nyc/api",
       "name": "poll.anny.nyc/api",
       "urls": [
