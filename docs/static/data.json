@@ -79,6 +79,22 @@
        ]
     },
     {
+      "noCors": true,
+      "tag": "stun.toughlovearena.com",
+      "name": "stun.toughlovearena.com",
+      "urls": [
+        "https://stun.toughlovearena.com"
+       ]
+    },
+    {
+      "noCors": true,
+      "tag": "turn.toughlovearena.com",
+      "name": "turn.toughlovearena.com",
+      "urls": [
+        "https://turn.toughlovearena.com"
+       ]
+    },
+    {
       "tag": "maryo.toughlovearena.com",
       "name": "maryo.toughlovearena.com",
       "urls": [
