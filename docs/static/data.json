@@ -88,6 +88,14 @@
     },
     {
       "noCors": true,
+      "tag": "match.toughlovearena.com",
+      "name": "match.toughlovearena.com",
+      "urls": [
+        "https://match.toughlovearena.com"
+       ]
+    },
+    {
+      "noCors": true,
       "tag": "turn.toughlovearena.com",
       "name": "turn.toughlovearena.com",
       "urls": [
