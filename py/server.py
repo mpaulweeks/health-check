@@ -8,7 +8,7 @@ def health():
     output = subprocess.check_output(
         ["./bash/disk_usage.sh"],
     )
-    return '<pre>' + output + '</pre>'
+    return '<pre>' + output.decode('utf-8') + '</pre>'
 
 
 if __name__ == "__main__":
