@@ -5,9 +5,10 @@ from flask import Flask
 
 
 def health():
-    return subprocess.check_output(
+    output = subprocess.check_output(
         ["./bash/disk_usage.sh"],
     )
+    return '<pre>' + output + '</pre>'
 
 
 if __name__ == "__main__":
