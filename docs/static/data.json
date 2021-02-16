@@ -25,11 +25,6 @@
       "tag": "changepurse",
       "date_field": ["updated"],
       "url": "https://mpaulweeks.github.io/changepurse/price.json"
-    },
-    {
-      "tag": "mtgify.org/json",
-      "date_field": ["updated"],
-      "url": "https://mtgify.org/json/version.json"
     }
   ],
   "services": [
@@ -45,13 +40,6 @@
       "name": "postboard",
       "urls": [
         "https://postboard.mpaulweeks.com/health"
-      ]
-    },
-    {
-      "tag": "socket-lobby",
-      "name": "socket-lobby",
-      "urls": [
-        "https://socket-lobby.mpaulweeks.com/api/health"
       ]
     },
     {
@@ -76,6 +64,46 @@
       ]
     },
     {
+      "tag": "mtgify.org/json",
+      "name": "mtgify.org/json",
+      "urls": [
+        "https://mtgify.org/json/version.json"
+      ]
+    },
+    {
+      "noCors": true,
+      "tag": "toughlovearena.com",
+      "name": "toughlovearena.com",
+      "urls": [
+        "https://toughlovearena.com"
+       ]
+    },
+    {
+      "noCors": true,
+      "tag": "stun.toughlovearena.com",
+      "name": "stun.toughlovearena.com",
+      "urls": [
+        "https://stun.toughlovearena.com"
+       ]
+    },
+    {
+      "noCors": true,
+      "tag": "match.toughlovearena.com",
+      "name": "match.toughlovearena.com",
+      "urls": [
+        "https://match.toughlovearena.com"
+       ]
+    },
+    {
+      "noCors": true,
+      "tag": "turn.toughlovearena.com",
+      "name": "turn.toughlovearena.com",
+      "urls": [
+        "https://turn.toughlovearena.com"
+       ]
+    },
+    {
+      "noCors": true,
       "tag": "poll.anny.nyc",
       "name": "poll.anny.nyc",
       "urls": [
@@ -83,6 +111,7 @@
       ]
     },
     {
+      "noCors": true,
       "tag": "poll.anny.nyc/admin",
       "name": "poll.anny.nyc/admin",
       "urls": [
@@ -90,6 +119,7 @@
       ]
     },
     {
+      "noCors": true,
       "tag": "poll.anny.nyc/api",
       "name": "poll.anny.nyc/api",
       "urls": [
