@@ -44,6 +44,11 @@ Lambda job pulls the latest endpoints directly from [GitHub](https://raw.githubu
 
 Deploy by pushing to master. CircleCI will deploy the lambda following the instructions in [.circleci/config.yml](/.circleci/config.yml)
 
+## Debugging Storage issues
+
+- https://stackoverflow.com/questions/20031604/how-can-i-find-out-why-my-storage-space-on-amazon-ec2-is-full
+- https://stackoverflow.com/questions/50847838/running-out-of-disk-space-in-amazon-ec2-cant-find-what-i-am-using-my-storage-f
+
 ## Todo
 
 - Convert lambda job to node.js to share code between FE and BE
