@@ -27,9 +27,36 @@ const config: SmokeAlarmConfig = {
   },
 
   services: [{
-    label: 'cat herder',
+    label: 'cat-herder.mpaulweeks.com',
     endpoints: [{
       url: 'https://cat-herder.mpaulweeks.com',
+    }],
+  }, {
+    label: 'postboard.mpaulweeks.com',
+    endpoints: [{
+      url: 'https://postboard.mpaulweeks.com/health',
+      verify: verifyJson,
+    }],
+  }, {
+    label: 'type4.mpaulweeks.com',
+    endpoints: [{
+      url: 'https://type4.mpaulweeks.com',
+    }],
+  }, {
+    label: 'poll.anny.nyc',
+    endpoints: [{
+      url: 'http://poll.anny.nyc',
+    }],
+  }, {
+    label: 'poll.anny.nyc/admin',
+    endpoints: [{
+      url: 'http://poll.anny.nyc/admin',
+    }],
+  }, {
+    label: 'poll.anny.nyc/api',
+    endpoints: [{
+      url: 'http://poll.anny.nyc/api/event/latest',
+      verify: verifyJson,
     }],
   }, {
     label: 'mtgify.org',
