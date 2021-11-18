@@ -44,6 +44,12 @@ const config: SmokeAlarmConfig = {
       url: 'https://cat-herder.mpaulweeks.com',
     }],
   }, {
+    label: 'toughlovearena.com',
+    endpoints: [{
+      url: 'https://toughlovearena.com/version.json',
+      verify: verifyJson,
+    }],
+  }, {
     label: 'type4.mpaulweeks.com',
     endpoints: [{
       url: 'https://type4.mpaulweeks.com',
