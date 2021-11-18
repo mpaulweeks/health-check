@@ -1,0 +1,28 @@
+{
+  "name": "mpw-smoke-alarm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "tsc": "tsc",
+    "build": "npm-run-all clean tsc",
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
+    "prebg": "npm run build",
+    "bg": "npx @toughlovearena/updater",
+    "kill": "forever stop dist/index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@toughlovearena/updater": "^2.1.2",
+    "forever": "^4.0.1",
+    "smoke-alarm": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.5.2"
+  }
+}
