@@ -88,7 +88,7 @@ const config: SmokeAlarmConfig = {
       verify: verifyUpdated(json => json.meta.updated),
     }],
   }, {
-    label: 'animefightclub.com',
+    label: 'animefight.club',
     endpoints: [{
       url: 'https://s3.amazonaws.com/sakuga/data/animefightclub.min.json',
       verify: verifyUpdated(json => json.meta.updated),
