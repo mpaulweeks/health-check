@@ -18,7 +18,7 @@
   "dependencies": {
     "@toughlovearena/updater": "^2.1.2",
     "forever": "^4.0.1",
-    "smoke-alarm": "^0.1.0"
+    "smoke-alarm": "^0.1.2"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",
