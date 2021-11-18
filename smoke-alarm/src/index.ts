@@ -44,11 +44,6 @@ const config: SmokeAlarmConfig = {
       url: 'https://cat-herder.mpaulweeks.com',
     }],
   }, {
-    label: 'poll.anny.nyc',
-    endpoints: [{
-      url: 'http://poll.anny.nyc',
-    }],
-  }, {
     label: 'type4.mpaulweeks.com',
     endpoints: [{
       url: 'https://type4.mpaulweeks.com',
@@ -59,12 +54,18 @@ const config: SmokeAlarmConfig = {
       url: 'https://mtgify.org',
     }],
   }, {
-    //   label: 'mtgify.org/json',
-    //   endpoints: [{
-    //     url: 'https://mtgify.org/json/version.json',
-    //     verify: verifyUpdated,
-    //   }],
-    // }, {
+    label: 'mtgify.org/json',
+    endpoints: [{
+      url: 'https://mtgify.org/json/version.json',
+      verify: verifyJson,
+      // verify: verifyUpdated(json => json.updated),
+    }],
+  }, {
+    label: 'poll.anny.nyc',
+    endpoints: [{
+      url: 'http://poll.anny.nyc',
+    }],
+  }, {
     label: 'poll.anny.nyc/admin',
     endpoints: [{
       url: 'http://poll.anny.nyc/admin',
@@ -74,6 +75,23 @@ const config: SmokeAlarmConfig = {
     endpoints: [{
       url: 'http://poll.anny.nyc/api/event/latest',
       verify: verifyJson,
+    }],
+  }, {
+    label: 'maryo',
+    endpoints: [{
+      url: 'https://maryo.mpaulweeks.com/health',
+      verify: resp => {
+        const percentUsed = resp.body.split('\n')[1].split(/\s+/)[4];
+        return {
+          ok: resp.status < 400,
+          message: `${percentUsed} used`,
+        };
+      },
+    }],
+  }, {
+    label: 'static.mpaulweeks.com',
+    endpoints: [{
+      url: 'https://static.mpaulweeks.com',
     }],
   }, {
     label: 'postboard.mpaulweeks.com',
