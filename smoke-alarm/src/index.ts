@@ -10,6 +10,18 @@ const auth: { awsKey: string, awsSecret: string } = JSON.parse(fs.readFileSync('
 const verifyJson: SmokeAlarmVerify = resp => ({
   ok: !!resp.json,
 });
+const verifyUpdated = (extractDate: (json: any) => string): SmokeAlarmVerify => {
+  return resp => {
+    const dateStr = extractDate(resp.json!);
+    const updated = new Date(dateStr);
+    const age = new Date().getTime() - updated.getTime();
+    const window = oneHour * 30;
+    return {
+      ok: age < window,
+      message: `updated ${Math.ceil(age / oneHour)}h ago`,
+    };
+  }
+};
 
 const config: SmokeAlarmConfig = {
   intervalMS: oneMinute * 5,
@@ -32,10 +44,9 @@ const config: SmokeAlarmConfig = {
       url: 'https://cat-herder.mpaulweeks.com',
     }],
   }, {
-    label: 'postboard.mpaulweeks.com',
+    label: 'poll.anny.nyc',
     endpoints: [{
-      url: 'https://postboard.mpaulweeks.com/health',
-      verify: verifyJson,
+      url: 'http://poll.anny.nyc',
     }],
   }, {
     label: 'type4.mpaulweeks.com',
@@ -43,11 +54,17 @@ const config: SmokeAlarmConfig = {
       url: 'https://type4.mpaulweeks.com',
     }],
   }, {
-    label: 'poll.anny.nyc',
+    label: 'mtgify.org',
     endpoints: [{
-      url: 'http://poll.anny.nyc',
+      url: 'https://mtgify.org',
     }],
   }, {
+    //   label: 'mtgify.org/json',
+    //   endpoints: [{
+    //     url: 'https://mtgify.org/json/version.json',
+    //     verify: verifyUpdated,
+    //   }],
+    // }, {
     label: 'poll.anny.nyc/admin',
     endpoints: [{
       url: 'http://poll.anny.nyc/admin',
@@ -59,24 +76,35 @@ const config: SmokeAlarmConfig = {
       verify: verifyJson,
     }],
   }, {
-    label: 'mtgify.org',
+    label: 'postboard.mpaulweeks.com',
     endpoints: [{
-      url: 'https://mtgify.org',
+      url: 'https://postboard.mpaulweeks.com/health',
+      verify: verifyJson,
     }],
-    // }, {
-    //   label: 'mtgify.org/json',
-    //   endpoints: [{
-    //     url: 'https://mtgify.org/json/version.json',
-    //     verify: resp => {
-    //       const updated = new Date(resp.json!.updated);
-    //       const age = new Date().getTime() - updated.getTime();
-    //       const window = oneHour * 30;
-    //       return {
-    //         ok: age < window,
-    //         message: `updated ${Math.ceil(age / oneHour)}h ago`,
-    //       };
-    //     },
-    //   }],
+  }, {
+    label: 'archive',
+    endpoints: [{
+      url: 'https://s3.amazonaws.com/mpaulweeks-archive/data.json',
+      verify: verifyUpdated(json => json.meta.updated),
+    }],
+  }, {
+    label: 'animefightclub.com',
+    endpoints: [{
+      url: 'https://s3.amazonaws.com/sakuga/data/animefightclub.min.json',
+      verify: verifyUpdated(json => json.meta.updated),
+    }],
+  }, {
+    label: 'edh-obscurity.mpaulweeks.com',
+    endpoints: [{
+      url: 'https://s3.amazonaws.com/edh-obscurity/edh_deck_counts.json',
+      verify: verifyUpdated(json => json.updated),
+    }],
+  }, {
+    label: 'mpaulweeks.github.io/changepurse',
+    endpoints: [{
+      url: 'https://mpaulweeks.github.io/changepurse/price.json',
+      verify: verifyUpdated(json => json.updated),
+    }],
   }],
 };
 
