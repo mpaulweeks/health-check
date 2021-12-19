@@ -32,7 +32,7 @@ const config: SmokeAlarmConfig = {
   ],
   auth: {
     awsSes: {
-      from: 'toughlovearena.login@gmail.com',
+      from: 'mpaulbot@gmail.com',
       key: auth.awsKey,
       secret: auth.awsSecret,
     },
