@@ -6,5 +6,5 @@
 venv_name=$1
 python3 -m venv --without-pip $venv_name
 . $venv_name/bin/activate
-curl https://bootstrap.pypa.io/get-pip.py | python
+python3 install/get-pip.py
 deactivate
