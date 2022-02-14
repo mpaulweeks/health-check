@@ -25,7 +25,7 @@ const verifyUpdated = (extractDate: (json: any) => string): SmokeAlarmVerify => 
 
 const config: SmokeAlarmConfig = {
   intervalMS: oneMinute * 5,
-  positiveIntervalMS: oneMinute * 60,
+  positiveIntervalMS: oneHour * 24,
 
   recipients: [
     'mpaulweeks@gmail.com',
