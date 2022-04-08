@@ -1,7 +1,5 @@
 # health-check
 
-[![CircleCI](https://circleci.com/gh/mpaulweeks/health-check/tree/master.svg?style=svg)](https://circleci.com/gh/mpaulweeks/health-check/tree/master)
-
 Static page and lambda job for health-checking my websites
 
 ## Setup
