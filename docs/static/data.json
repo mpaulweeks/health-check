@@ -72,38 +72,6 @@
     },
     {
       "noCors": true,
-      "tag": "toughlovearena.com",
-      "name": "toughlovearena.com",
-      "urls": [
-        "https://toughlovearena.com"
-       ]
-    },
-    {
-      "noCors": true,
-      "tag": "stun.toughlovearena.com",
-      "name": "stun.toughlovearena.com",
-      "urls": [
-        "https://stun.toughlovearena.com"
-       ]
-    },
-    {
-      "noCors": true,
-      "tag": "match.toughlovearena.com",
-      "name": "match.toughlovearena.com",
-      "urls": [
-        "https://match.toughlovearena.com"
-       ]
-    },
-    {
-      "noCors": true,
-      "tag": "turn.toughlovearena.com",
-      "name": "turn.toughlovearena.com",
-      "urls": [
-        "https://turn.toughlovearena.com"
-       ]
-    },
-    {
-      "noCors": true,
       "tag": "poll.anny.nyc",
       "name": "poll.anny.nyc",
       "urls": [
