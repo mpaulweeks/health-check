@@ -24,7 +24,7 @@
     {
       "tag": "changepurse",
       "date_field": ["updated"],
-      "url": "https://mpaulweeks.github.io/changepurse/price.json"
+      "url": "https://s3.amazonaws.com/mpaulweeks-changepurse/price.min.json"
     }
   ],
   "services": [
