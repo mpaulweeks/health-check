@@ -126,7 +126,7 @@ const config: SmokeAlarmConfig = {
   }, {
     label: 'mpaulweeks.github.io/changepurse',
     endpoints: [{
-      url: 'https://mpaulweeks-changepurse.s3.amazonaws.com/price.min.json',
+      url: 'https://s3.amazonaws.com/mpaulweeks-changepurse/price.min.json',
       verify: verifyUpdated(json => json.updated),
     }],
   }],
