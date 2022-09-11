@@ -44,8 +44,18 @@ Deploy by pushing to master. CircleCI will deploy the lambda following the instr
 
 ## Debugging Storage issues
 
+- Delete any mail files `ls -al /var/spool/mail`
+- `sudo reboot`
+  1. `sudo service nginx start`
+  2. Restart servers for the following:
+```
+anny-vote
+cat-herder
+health-check
+postboard
+type4flash
+```
 - `du -sh ~/*`
-- `ls -al /var/spool/mail`
 - https://stackoverflow.com/questions/20031604/how-can-i-find-out-why-my-storage-space-on-amazon-ec2-is-full
 - https://stackoverflow.com/questions/50847838/running-out-of-disk-space-in-amazon-ec2-cant-find-what-i-am-using-my-storage-f
 
