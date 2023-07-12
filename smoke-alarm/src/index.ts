@@ -6,7 +6,11 @@ import { SmokeAlarmVerify } from 'smoke-alarm/lib/types';
 const oneMinute = 1000 * 60;
 const oneHour = oneMinute * 60;
 
-const auth: { awsKey: string, awsSecret: string } = JSON.parse(fs.readFileSync('auth.json').toString());
+const auth: {
+  from: string;
+  awsKey: string;
+  awsSecret: string;
+} = JSON.parse(fs.readFileSync('auth.json').toString());
 const verifyJson: SmokeAlarmVerify = resp => ({
   ok: !!resp.json,
 });
@@ -32,7 +36,7 @@ const config: SmokeAlarmConfig = {
   ],
   auth: {
     awsSes: {
-      from: 'mpaulbot@gmail.com',
+      from: auth.from,
       key: auth.awsKey,
       secret: auth.awsSecret,
     },
