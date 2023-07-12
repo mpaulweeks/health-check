@@ -112,18 +112,18 @@ const config: SmokeAlarmConfig = {
       verify: verifyUpdated(json => json.meta.updated),
     }],
   }, {
-    label: 'animefight.club',
-    endpoints: [{
-      url: 'https://s3.amazonaws.com/sakuga/data/animefightclub.min.json',
-      verify: verifyUpdated(json => json.meta.updated),
-    }],
-  }, {
-    label: 'edh-obscurity.mpaulweeks.com',
-    endpoints: [{
-      url: 'https://s3.amazonaws.com/edh-obscurity/edh_deck_counts.json',
-      verify: verifyUpdated(json => json.updated),
-    }],
-  }, {
+  //   label: 'animefight.club',
+  //   endpoints: [{
+  //     url: 'https://s3.amazonaws.com/sakuga/data/animefightclub.min.json',
+  //     verify: verifyUpdated(json => json.meta.updated),
+  //   }],
+  // }, {
+  //   label: 'edh-obscurity.mpaulweeks.com',
+  //   endpoints: [{
+  //     url: 'https://s3.amazonaws.com/edh-obscurity/edh_deck_counts.json',
+  //     verify: verifyUpdated(json => json.updated),
+  //   }],
+  // }, {
     label: 'mpaulweeks.github.io/changepurse',
     endpoints: [{
       url: 'https://s3.amazonaws.com/mpaulweeks-changepurse/price.min.json',
