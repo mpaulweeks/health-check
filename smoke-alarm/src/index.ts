@@ -50,8 +50,7 @@ const config: SmokeAlarmConfig = {
   }, {
     label: 'cat-herder-api.mpaulweeks.com',
     endpoints: [{
-      // todo https
-      url: 'http://cat-herder-api.mpaulweeks.com:3001/health',
+      url: 'https://cat-herder-api.mpaulweeks.com/health',
     }],
   }, {
     label: 'toughlovearena.com',
