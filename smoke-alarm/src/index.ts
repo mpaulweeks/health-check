@@ -138,6 +138,12 @@ const config: SmokeAlarmConfig = {
       url: 'https://s3.amazonaws.com/mpaulweeks-changepurse/price.min.json',
       verify: verifyUpdated(json => json.updated),
     }],
+  }, {
+    label: 'dominion-sim-api',
+    endpoints: [{
+      url: 'https://dominion-sim-api.onrender.com/health',
+      verify: verifyJson,
+    }],
   }],
 };
 
