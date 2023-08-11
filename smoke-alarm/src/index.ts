@@ -141,7 +141,7 @@ const config: SmokeAlarmConfig = {
   }, {
     label: 'dominion-sim-api',
     endpoints: [{
-      url: 'https://dominion-sim-api.onrender.com/health',
+      url: 'https://dominion-sim-api.mpaulweeks.com/health',
       verify: verifyJson,
     }],
   }],
